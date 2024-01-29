@@ -41,7 +41,7 @@
             <div class="sub-menu">
                 <ul class="menu">
                     <li>
-                        <a href="/signin">Sign In</a>
+                        <a href="login.jsp">Sign In</a>
                     </li>
                     <li>
                         <a href="#">My Starbucks</a>

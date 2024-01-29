@@ -38,13 +38,33 @@
 	<%@ include file="header.jsp" %>
 	<section>
 		<%@ include file="list.jsp" %>
+		
+<%
+	String num = request.getParameter("num");
+	//1.JSDB로 Oracle연결 ->java - DBConfig.java
+	Connection conn = null; //디비 접속 성공시 접속 정보 저장
+	PreparedStatement pstmt = null; //쿼리를 실행하기 객체 정보
+	ResultSet rs = null;
+	
+
+	try{
+		conn=DBConfig.getConnection();
+		
+		//2. BO_FREE 테이블에서 SQL로 데이터 가져오기
+		
+		String sql = "UPDATE BO_FREE SET HIT=HIT+1 WHERE NUM=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1,Integer.parseInt(num));
+		pstmt.executeUpdate();
+		
+	}catch(Exception e){
+		System.out.println("에러 로그:"+e.getMessage());
+	}
+%>
 		<div class="inner post">
 			<%
-				//1.JSDB로 Oracle연결 ->java - DBConfig.java
-				Connection conn = null; //디비 접속 성공시 접속 정보 저장
-				PreparedStatement pstmt = null; //쿼리를 실행하기 객체 정보
-				ResultSet rs = null;
-				String num = request.getParameter("num");
+				
+				
 				if(num.equals("0")){
 					%>
 					<div class="title">

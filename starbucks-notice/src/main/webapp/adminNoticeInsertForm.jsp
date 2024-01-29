@@ -40,7 +40,7 @@
     			return;
     		}
     		
-    		if($('#korname').val().length>=10){
+    		if($('#korname').val().length>=5){
     			alert('10자이내로 입력하세요.');
     			$('#korname').focus();
     			
